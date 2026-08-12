@@ -1,6 +1,6 @@
 package com.example.tablefunapp.data
 import com.google.gson.annotations.SerializedName
-class YouTubeDto {
+
 
 
     /**
@@ -8,6 +8,7 @@ class YouTubeDto {
      * Disse klasser findes KUN for at Gson kan parse JSON.
      * Resten af appen bruger models.Song
      */
+
 
     data class YouTubeSearchResponseDto(
         val nextPageToken: String?,
@@ -45,4 +46,3 @@ class YouTubeDto {
     )
 
 
-}
