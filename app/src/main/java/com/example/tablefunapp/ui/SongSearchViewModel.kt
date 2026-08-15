@@ -8,12 +8,14 @@ import com.example.tablefunapp.repository.YouTubeRepository
 
 class SongSearchViewModel : ViewModel() {
 
-    //The viewModel holds States
+   //Depedency
     private val repository = YouTubeRepository()
+    //The viewModel holds States
     val songs: MutableState<List<Song>> = mutableStateOf(listOf())
     val isLoadingSongs = mutableStateOf(false)
     val errorMessage = mutableStateOf("")
 
+    //Thin but controls the transitions
     fun search(query: String) {
 
         isLoadingSongs.value = true //Start loading
