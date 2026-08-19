@@ -38,7 +38,7 @@ From a ViewModel's point of view they are identical. That is the whole point of 
 
 
 
-`YouTubeRepository` is the boundary: below it there are only DTOs, above it only `Song`. The translation happens in `SongMapper.toSong()`, which also handles fallbacks — thumbnails fall back from `high` to `medium` to `default`, and results without a `videoId` are filtered out.
+`YouTubeRepository` is the boundary: below it there are only DTOs, above it only `Song`. The translation happens in `SongMapper.toSong()`, which also handles fallbacks, thumbnails fall back from `high` to `medium` to `default`, and results without a `videoId` are filtered out.
 
 If YouTube changes their JSON, the DTOs and the mapper change. The rest of the app is untouched.
 
