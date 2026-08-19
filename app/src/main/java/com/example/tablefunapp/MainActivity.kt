@@ -16,6 +16,8 @@ import com.example.tablefunapp.screens.SongSearch
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.tablefunapp.screens.SoundBoard
+import com.example.tablefunapp.ui.CueViewModel
 import com.example.tablefunapp.ui.SongSearchViewModel
 
 
@@ -37,7 +39,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen(
     modifier: Modifier = Modifier,
-    viewModel: SongSearchViewModel = viewModel()
+    viewModel: SongSearchViewModel = viewModel(),
+    cueviewModel: CueViewModel = viewModel(),
 ) {
     val navController = rememberNavController()
     val songs = viewModel.songs.value
@@ -45,8 +48,12 @@ fun MainScreen(
 
     NavHost(
         navController = navController,
-        startDestination = NavRoutes.SongSearch.route
+        startDestination = NavRoutes.SoundBoard.route
     ) {
+        composable(NavRoutes.SoundBoard.route) {
+            SoundBoard(cues = cueviewModel.cues.value)
+        }
+
         composable(NavRoutes.SongSearch.route) {
             SongSearch(
                 modifier = modifier,
