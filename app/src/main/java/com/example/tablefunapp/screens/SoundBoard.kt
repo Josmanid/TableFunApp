@@ -1,13 +1,18 @@
 package com.example.tablefunapp.screens
 
 import android.R
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -60,31 +65,41 @@ fun SoundBoard(
         }
     }
 }
-
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CueBlock(
     cue: Cue,
     onShortTap: () -> Unit,
     onLongTap: () -> Unit
 ) {
-    Column(
+    Card(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(8.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxWidth()
+            .height(120.dp)
+            .combinedClickable(
+                onClick = { onShortTap() },
+                onDoubleClick = { onLongTap() }
+            )
     ) {
-        Text(
-            text = cue.name,
-            style = MaterialTheme.typography.titleLarge,
-            textAlign = TextAlign.Center
-        )
-        if (cue.longTitle.isNotEmpty()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Text(
-                text = cue.longTitle,
-                style = MaterialTheme.typography.bodySmall,
+                text = cue.name,
+                style = MaterialTheme.typography.titleLarge,
                 textAlign = TextAlign.Center
             )
+            if (cue.longTitle.isNotEmpty()) {
+                Text(
+                    text = cue.longTitle,
+                    style = MaterialTheme.typography.bodySmall,
+                    textAlign = TextAlign.Center
+                )
+            }
         }
     }
 }

@@ -51,7 +51,11 @@ fun MainScreen(
         startDestination = NavRoutes.SoundBoard.route
     ) {
         composable(NavRoutes.SoundBoard.route) {
-            SoundBoard(cues = cueviewModel.cues.value)
+            SoundBoard(
+                cues = cueviewModel.cues.value,
+                onShortTap = {cue -> cueviewModel.playShort(cue)},
+                onLongTap = {cue -> cueviewModel.playLong(cue)}
+            )
         }
 
         composable(NavRoutes.SongSearch.route) {
