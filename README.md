@@ -66,30 +66,6 @@ State lives in the ViewModel, not in the repository. This departs from a fair am
 
 Unit tests in `src/test` cover the mapper: that items without a `videoId` are dropped, and that the thumbnail fallback picks correctly. Plain JVM, no emulator.
 
-## Getting started
 
-1. Clone the repo
-2. Create an API key for the YouTube Data API v3 in the Google Cloud Console
-3. Add it to `local.properties`:
-   ```
-   YOUTUBE_API_KEY=your_key
-   ```
-4. Put audio files in `app/src/main/res/raw/` (see below)
-5. Build and run
-
-### Audio files
-
-Audio files are not included in the repo. Naming: `<cue>_short.ogg` and `<cue>_long.mp3` — lowercase letters, digits and underscores only, since filenames become constants in `R.raw`.
-
-Short clips as OGG (better compression, no encoder padding at the start), long ones as MP3.
-
-## Known limitations
-
-- Files in `res/raw` are compiled into the APK, so adding songs requires a new build
-- `onDoubleClick` introduces roughly 300 ms of latency on the short clip, since Compose waits to see whether a second tap follows
-- The API key has no application restrictions — needs Android + SHA-1 before distribution
-- Search results are not cached; each search costs 100 quota units out of 10,000 per day
-
-## Stack
 
 Kotlin · Jetpack Compose · Material 3 · Navigation Compose · ViewModel · Retrofit 3 · Gson · MediaPlayer · JUnit
