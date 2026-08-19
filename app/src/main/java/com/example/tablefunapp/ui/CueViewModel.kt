@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import com.example.tablefunapp.models.Cue
+import com.example.tablefunapp.models.NO_SOUND
 import com.example.tablefunapp.repository.CueRepository
 import com.example.tablefunapp.repository.SoundRepository
 
@@ -21,10 +22,12 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun playShort(cue: Cue) {
+        if(cue.shortSound == NO_SOUND) return
         soundRepository.play(cue.shortSound)
     }
 
     fun playLong(cue: Cue) {
+        if(cue.longSound == NO_SOUND) return
         soundRepository.play(cue.longSound)
     }
 
