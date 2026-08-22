@@ -1,9 +1,12 @@
 package com.example.tablefunapp.screens
 
-import android.R
+
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,10 +25,16 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tablefunapp.models.Cue
+import com.example.tablefunapp.R
+import androidx.compose.ui.graphics.Color
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -81,24 +90,53 @@ fun CueBlock(
                 onDoubleClick = { onLongTap() }
             )
     ) {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Text(
-                text = cue.name,
-                style = MaterialTheme.typography.titleLarge,
-                textAlign = TextAlign.Center
+        Box {
+            Image(
+                painter = painterResource(id = cue.image),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
             )
-            if (cue.longTitle.isNotEmpty()) {
+
+            // Mørk gradient så teksten kan læses uanset billedet
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .background(
+                        Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Black.copy(alpha = 0.15f),
+                                Color.Black.copy(alpha = 0.65f)
+                            )
+                        )
+                    )
+            )
+
+            Column(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(8.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
                 Text(
-                    text = cue.longTitle,
-                    style = MaterialTheme.typography.bodySmall,
-                    textAlign = TextAlign.Center
+                    text = cue.name,
+                    style = MaterialTheme.typography.titleLarge,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis
                 )
+                if (cue.longTitle.isNotBlank()) {
+                    Text(
+                        text = cue.longTitle,
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.White.copy(alpha = 0.85f),
+                        textAlign = TextAlign.Center,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                }
             }
         }
     }
@@ -109,10 +147,10 @@ fun CueBlock(
 fun SoundBoardPreview() {
     SoundBoard(
         cues = listOf(
-            Cue(1, "Jonas", 0, 0, "Mugge"),
-            Cue(2, "Spiller 2", 0, 0, ""),
-            Cue(3, "Spiller 3", 0, 0, "Pepsi Man Theme"),
-            Cue(4, "Spiller 4", 0, 0, ""),
+            Cue(1, "Kristian", 0, 0, "Mugge", image =R.drawable.revenge),
+            Cue(2, "Jonas C", 0, 0, ""),
+            Cue(3, "Lassen", 0, 0, ""),
+            Cue(4, "Jonas S", 0, 0, ""),
             Cue(5, "Shop", 0, 0, "")
         )
     )
