@@ -98,7 +98,7 @@ fun CueBlock(
                 modifier = Modifier.fillMaxSize()
             )
 
-            // Mørk gradient så teksten kan læses uanset billedet
+            //Dark gradient for readability
             Box(
                 modifier = Modifier
                     .matchParentSize()
@@ -106,7 +106,7 @@ fun CueBlock(
                         Brush.verticalGradient(
                             colors = listOf(
                                 Color.Black.copy(alpha = 0.15f),
-                                Color.Black.copy(alpha = 0.65f)
+                                Color.Black.copy(alpha = 0.55f)
                             )
                         )
                     )
@@ -147,11 +147,12 @@ fun CueBlock(
 fun SoundBoardPreview() {
     SoundBoard(
         cues = listOf(
-            Cue(1, "Kristian", 0, 0, "Mugge", image =R.drawable.revenge),
-            Cue(2, "Jonas C", 0, 0, ""),
-            Cue(3, "Lassen", 0, 0, ""),
-            Cue(4, "Jonas S", 0, 0, ""),
-            Cue(5, "Shop", 0, 0, "")
+            Cue(1, "Kristian", 0, emptyList(), "Mugge", image =R.drawable.revenge),
+            Cue(2, "Jonas C", 0, emptyList(), "", image = R.drawable.vakuu),
+            Cue(3, "Lassen", 0, emptyList(), "", image = R.drawable.leende_ko_classic),
+            Cue(4, "Jonas S", 0, emptyList(), "", image = R.drawable.senshi),
+            Cue(5, "Shop", 0, emptyList(), "", image = R.drawable.slay_shoopkeeper),
+            Cue(6, "SideQuest", 0, emptyList(), "", image = R.drawable.sidequest)
         )
     )
 }

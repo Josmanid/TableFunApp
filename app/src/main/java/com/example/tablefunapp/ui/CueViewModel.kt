@@ -27,8 +27,8 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun playLong(cue: Cue) {
-        if(cue.longSound == NO_SOUND) return
-        soundRepository.play(cue.longSound)
+        if(cue.longSounds.isEmpty()) return
+        soundRepository.play(cue.longSounds.random())
     }
 
     override fun onCleared() {

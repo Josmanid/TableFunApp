@@ -7,7 +7,7 @@ data class Cue(
     val id: Int,
     val name: String,
     val shortSound: Int,
-    val longSound: Int,
+    val longSounds: List<Int>,
     val longTitle: String,
     val image: Int = R.drawable.vibecat
 )
