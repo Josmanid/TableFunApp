@@ -34,7 +34,7 @@ class CueRepository {
             listOf(
                 R.raw.lassen_long_svampebob,
                 R.raw.lassen_long_mosan,
-                R.raw.gutgunug_short
+
                 ),
             "",
             image = R.drawable.leende_ko_classic
