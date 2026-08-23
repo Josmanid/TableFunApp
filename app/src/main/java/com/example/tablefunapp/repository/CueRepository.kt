@@ -2,6 +2,7 @@ package com.example.tablefunapp.repository
 
 import com.example.tablefunapp.R
 import com.example.tablefunapp.models.Cue
+import com.example.tablefunapp.models.CueAnimation
 
 class CueRepository {
     //making a list of private hardcodet properties
@@ -14,7 +15,10 @@ class CueRepository {
                 R.raw.kristian_long_pepsiman,
                 R.raw.crone_long_moge,
                 R.raw.kristian_long_sheksophone
-            ), longTitle = " ", image = R.drawable.revenge
+            ),
+            longTitle = " ",
+            image = R.drawable.revenge,
+            animation = CueAnimation.SHAKE
         ),
         Cue(
             2,
@@ -25,7 +29,8 @@ class CueRepository {
                 R.raw.crone_long_mitchirineko_march
                 ),
             "",
-            image = R.drawable.vakuu
+            image = R.drawable.vakuu,
+            animation = CueAnimation.PULSE
         ),
         Cue(
             3,
@@ -48,7 +53,8 @@ class CueRepository {
                 R.raw.johnz_long_mistymountains
                 ),
             "",
-            image = R.drawable.senshi
+            image = R.drawable.senshi,
+            animation = CueAnimation.WOBBLE
         ),
         Cue(
             5,
@@ -56,7 +62,8 @@ class CueRepository {
             R.raw.random_short_nice,
             listOf(R.raw.shop_long_elderscrolls),
             "",
-            image = R.drawable.slay_shoopkeeper
+            image = R.drawable.slay_shoopkeeper,
+            animation = CueAnimation.SPIN
         ),
         Cue(
             6,
@@ -64,7 +71,8 @@ class CueRepository {
             0,
             listOf(R.raw.random_long_sidequest),
             "",
-            image = R.drawable.sidequest
+            image = R.drawable.sidequest,
+            animation = CueAnimation.FASTBOUNCE
         )
     )
 
