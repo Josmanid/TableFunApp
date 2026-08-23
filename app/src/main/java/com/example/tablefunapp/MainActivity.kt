@@ -54,7 +54,8 @@ fun MainScreen(
             SoundBoard(
                 cues = cueviewModel.cues.value,
                 onShortTap = {cue -> cueviewModel.playShort(cue)},
-                onLongTap = {cue -> cueviewModel.playLong(cue)}
+                onLongTap = {cue -> cueviewModel.playLong(cue)},
+                playingCueId = cueviewModel.playingCueId.value
             )
         }
 

@@ -7,9 +7,10 @@ class SoundRepository(private val context: Context) {
 
     private var player: MediaPlayer? = null
 
-    fun play(soundResId: Int) {
+    fun play(soundResId: Int, onFinished: () -> Unit = {}) {
         stop()
         player = MediaPlayer.create(context, soundResId)
+        player?.setOnCompletionListener { onFinished() }
         player?.start()
     }
 
@@ -17,4 +18,6 @@ class SoundRepository(private val context: Context) {
         player?.release() //otherwise it runs dry
         player = null
     }
+
+
 }

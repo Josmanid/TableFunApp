@@ -4,6 +4,7 @@ package com.example.tablefunapp.screens
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -16,6 +17,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -43,7 +45,8 @@ fun SoundBoard(
     cues: List<Cue>,
     modifier: Modifier = Modifier,
     onShortTap: (Cue) -> Unit = {},
-    onLongTap: (Cue) -> Unit = {}
+    onLongTap: (Cue) -> Unit = {},
+    playingCueId: Int? = null
 ) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
@@ -68,7 +71,8 @@ fun SoundBoard(
                 CueBlock(
                     cue = cue,
                     onShortTap = { onShortTap(cue) },
-                    onLongTap = { onLongTap(cue) }
+                    onLongTap = { onLongTap(cue) },
+                    isPlaying = cue.id == playingCueId
                 )
             }
         }
@@ -79,7 +83,8 @@ fun SoundBoard(
 fun CueBlock(
     cue: Cue,
     onShortTap: () -> Unit,
-    onLongTap: () -> Unit
+    onLongTap: () -> Unit,
+    isPlaying: Boolean = false
 ) {
     Card(
         modifier = Modifier
@@ -88,6 +93,10 @@ fun CueBlock(
             .combinedClickable(
                 onClick = { onShortTap() },
                 onDoubleClick = { onLongTap() }
+            ).border(
+                width = if (isPlaying) 3.dp else 0.dp,
+                color = Color.Yellow,
+                shape = CardDefaults.shape
             )
     ) {
         Box {
@@ -127,6 +136,7 @@ fun CueBlock(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
+                //TODO: Is it neccasary YAGNI??
                 if (cue.longTitle.isNotBlank()) {
                     Text(
                         text = cue.longTitle,
