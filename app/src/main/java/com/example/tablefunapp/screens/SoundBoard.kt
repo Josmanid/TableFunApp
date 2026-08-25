@@ -15,6 +15,7 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -70,7 +71,7 @@ fun SoundBoard(
             )
         }) { innerPadding ->
         LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
+            columns = GridCells.Adaptive(minSize = 160.dp),
             modifier = Modifier
                 .padding(innerPadding)
                 .padding(8.dp),
@@ -99,7 +100,7 @@ fun CueBlock(
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(120.dp)
+            .aspectRatio(1.5f)
             .combinedClickable(
                 onClick = { onShortTap() },
                 onDoubleClick = { onLongTap() }

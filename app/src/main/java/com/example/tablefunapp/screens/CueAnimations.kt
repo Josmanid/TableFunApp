@@ -57,7 +57,7 @@ fun Modifier.cueAnimation(
         initialValue = -4f,
         targetValue = 4f,
         animationSpec = infiniteRepeatable(
-            animation = tween(180),
+            animation = tween(400),
             repeatMode = RepeatMode.Reverse
         ),
         label = "rotation"
