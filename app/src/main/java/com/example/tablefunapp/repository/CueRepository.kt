@@ -3,6 +3,7 @@ package com.example.tablefunapp.repository
 import com.example.tablefunapp.R
 import com.example.tablefunapp.models.Cue
 import com.example.tablefunapp.models.CueAnimation
+import com.example.tablefunapp.models.WeightedSound
 
 class CueRepository {
     //making a list of private hardcodet properties
@@ -13,24 +14,22 @@ class CueRepository {
             name = "den udøvende magt",
             shortSound = R.raw.kristian_short_the_darkness,
             longSounds = listOf(
-                R.raw.kristian_long_legendofsexy,
-                R.raw.prince_hinata_long,
-                R.raw.lesson_long,
-                R.raw.kristian_long_sheksophone
+                WeightedSound(R.raw.eminence_timeofwar_long, weight = 40),
+                WeightedSound(R.raw.tobeherox_long, weight = 40),
+                WeightedSound(R.raw.aiscream_long, weight = 20)
             ),
             longTitle = " ",
-            image = R.drawable.revenge,
+            image = R.drawable.gladkriger,
             animation = CueAnimation.SHAKE
         ),
         Cue(
             2,
             "Vakuu",
-            R.raw.handsomelegend_short,
+            R.raw.explosion_short,
             listOf(
-                R.raw.crone_long_moge,
-                R.raw.crone_long_mitchirineko_march,
-                R.raw.penicillin_long,
-                R.raw.wideputin_long
+                WeightedSound(R.raw.touhou_owenwashere_epic_long, weight = 40),
+                WeightedSound(R.raw.raphaelfinalact_bdg3_long, weight = 40),
+                WeightedSound(R.raw.myheartwill_flute_long, weight = 20)
             ),
             "",
             image = R.drawable.vakuu,
@@ -39,13 +38,11 @@ class CueRepository {
         Cue(
             3,
             "Håbet",
-            R.raw.wabuu_short,
+            R.raw.anime_short,
             listOf(
-                R.raw.lassen_long_svampebob,
-                R.raw.lassen_long_mosan,
-                R.raw.lassen_long_orchardofmine_instrumental,
-                R.raw.gigachad_orchestral_long
-
+                WeightedSound(R.raw.skyrim_dragonborncomes_long, weight = 40),
+                WeightedSound(R.raw.lassen_long_orchardofmine_instrumental, weight = 40),
+                WeightedSound(R.raw.lassen_long_mosan, weight = 20)
             ),
             "",
             image = R.drawable.leende_ko_classic
@@ -55,36 +52,74 @@ class CueRepository {
             "JohnzeManden",
             R.raw.johnz_short_hereisjohnny,
             listOf(
-                R.raw.madao_long,
-                R.raw.johnz_long_mistymountains,
-                R.raw.pingu_noot_long,
-                R.raw.vitas_long
+                WeightedSound(R.raw.madao_long, weight = 40),
+                WeightedSound(R.raw.valhallacaling_long, weight = 40),
+                WeightedSound(R.raw.pizza_spiderman_long, weight = 20)
             ),
             "",
             image = R.drawable.senshi,
             animation = CueAnimation.WOBBLE
         ),
         Cue(
-            5,
+            id = 5,
+            name = "Rot",
+            shortSound = R.raw.random_short_heheboi,
+            longSounds = listOf(
+                WeightedSound(R.raw.era_ameno_long, weight = 40),
+                WeightedSound(R.raw.ratdance_long, weight = 40),
+                WeightedSound(R.raw.hamtaro_long_dansk, weight = 20)
+            ),
+            longTitle = " ",
+            image = R.drawable.dorime_rat,
+            animation = CueAnimation.BOUNCE
+        ),
+        Cue(
+            id = 6,
+            name = "Blank",
+            shortSound = R.raw.gutgunug_short,
+            longSounds = listOf(
+                WeightedSound(R.raw.runninginthe90s_long, weight = 80),
+                WeightedSound(R.raw.runninginthe90s_shittyflute_long, weight = 20)
+            ),
+            longTitle = " ",
+            image = R.drawable.soy_blank,
+            animation = CueAnimation.BOUNCE
+        ),
+        Cue(
+            7,
             "Shop",
             R.raw.random_short_nice,
             listOf(
-                R.raw.shop_long_elderscrolls,
-                R.raw.beedleshop_long
+                WeightedSound(R.raw.shop_long_elderscrolls),
+                WeightedSound(R.raw.beedleshop_long)
             ),
             "",
             image = R.drawable.slay_shoopkeeper,
             animation = CueAnimation.SPIN
         ),
         Cue(
-            6,
+            8,
+            "Camp",
+            R.raw.campdivorced_short,
+            listOf(
+                WeightedSound(R.raw.baldursgate_iwanttolife_long, weight = 40),
+                WeightedSound(R.raw.divinelaments_dos_long, weight = 40),
+                WeightedSound(R.raw.raphaelfinalact_bdg3_long, weight = 20)
+            ),
+            "",
+            image = R.drawable.wither,
+            animation = CueAnimation.SPIN
+        ),
+        Cue(
+            9,
             "SideQuest",
             0,
-            listOf(R.raw.random_long_sidequest),
+            listOf(WeightedSound(R.raw.random_long_sidequest)),
             "",
             image = R.drawable.sidequest,
             animation = CueAnimation.FASTBOUNCE
         )
+
     )
 
     //Promises to return a list of type Cue

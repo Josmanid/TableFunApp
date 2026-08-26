@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import com.example.tablefunapp.models.Cue
 import com.example.tablefunapp.models.NO_SOUND
+import com.example.tablefunapp.models.pickWeighted
 import com.example.tablefunapp.repository.CueRepository
 import com.example.tablefunapp.repository.SoundRepository
 
@@ -37,7 +38,7 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
     fun playLong(cue: Cue) {
         if(cue.longSounds.isEmpty()) return
         playingCueId.value = cue.id // TODO: can be problematic when implementing a big stop
-        soundRepository.play(cue.longSounds.random()){
+        soundRepository.play(cue.longSounds.pickWeighted()){
             playingCueId.value = null
         }
     }
