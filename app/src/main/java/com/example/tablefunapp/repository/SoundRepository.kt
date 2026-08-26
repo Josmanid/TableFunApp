@@ -7,10 +7,11 @@ class SoundRepository(private val context: Context) {
 
     private var player: MediaPlayer? = null
 
-    fun play(soundResId: Int, onFinished: () -> Unit = {}) {
+    fun play(soundResId: Int,loop: Boolean = false, onFinished: () -> Unit = {}) {
         stop()
         player = MediaPlayer.create(context, soundResId)
         player?.setOnCompletionListener { onFinished() }
+        player?.isLooping = loop
         player?.start()
     }
 

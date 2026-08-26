@@ -38,7 +38,7 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
     fun playLong(cue: Cue) {
         if(cue.longSounds.isEmpty()) return
         playingCueId.value = cue.id // TODO: can be problematic when implementing a big stop
-        soundRepository.play(cue.longSounds.pickWeighted()){
+        soundRepository.play(cue.longSounds.pickWeighted(), loop = true){
             playingCueId.value = null
         }
     }
