@@ -25,6 +25,7 @@ class SoundRepository(private val context: Context) {
         shortPlayer?.setOnCompletionListener { //when the listener is observing stop of short
             longPlayer?.setVolume(1f,1f) // then turn up the long sound
             stopShort()
+            onFinished()
         }
         shortPlayer?.start()
 

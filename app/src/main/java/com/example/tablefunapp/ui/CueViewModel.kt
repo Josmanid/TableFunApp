@@ -28,6 +28,11 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
 
     fun playShort(cue: Cue) {
         if(cue.shortSound == NO_SOUND) return
+        if(playingShortCueId.value == cue.id){ //Guard clause when double tap for same long sound
+            soundRepository.stopShort()
+            playingShortCueId.value = null
+            return
+        }
         playingShortCueId.value = cue.id
         soundRepository.playShort(cue.shortSound){
             playingShortCueId.value = null

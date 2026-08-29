@@ -1,16 +1,9 @@
 package com.example.tablefunapp.screens
 
 
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -18,14 +11,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -33,10 +23,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -47,7 +35,6 @@ import androidx.compose.ui.unit.dp
 import com.example.tablefunapp.models.Cue
 import com.example.tablefunapp.R
 import androidx.compose.ui.graphics.Color
-import com.example.tablefunapp.models.CueAnimation
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,8 +44,10 @@ fun SoundBoard(
     modifier: Modifier = Modifier,
     onShortTap: (Cue) -> Unit = {},
     onLongTap: (Cue) -> Unit = {},
-    playingCueId: Int? = null
-) {
+    playingLongCueId: Int? = null,
+    playingShortCueId: Int? = null
+
+    ) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
@@ -83,7 +72,8 @@ fun SoundBoard(
                     cue = cue,
                     onShortTap = { onShortTap(cue) },
                     onLongTap = { onLongTap(cue) },
-                    isPlaying = cue.id == playingCueId
+                    isPlayingLong = cue.id == playingLongCueId,
+                    isPlayingShort = cue.id == playingShortCueId
                 )
             }
         }
@@ -95,7 +85,8 @@ fun CueBlock(
     cue: Cue,
     onShortTap: () -> Unit,
     onLongTap: () -> Unit,
-    isPlaying: Boolean = false
+    isPlayingLong: Boolean = false,
+    isPlayingShort: Boolean = false
 ) {
     Card(
         modifier = Modifier
@@ -104,7 +95,7 @@ fun CueBlock(
             .combinedClickable(
                 onClick = { onShortTap() },
                 onDoubleClick = { onLongTap() }
-            ).cueAnimation(cue.animation,isPlaying)
+            ).cueAnimation(cue.animation, isPlayingLong || isPlayingShort)
     ) {
         Box {
             Image(
