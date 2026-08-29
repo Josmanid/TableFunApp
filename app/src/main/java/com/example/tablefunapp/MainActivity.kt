@@ -5,10 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -55,7 +51,7 @@ fun MainScreen(
                 cues = cueviewModel.cues.value,
                 onShortTap = {cue -> cueviewModel.playShort(cue)},
                 onLongTap = {cue -> cueviewModel.playLong(cue)},
-                playingCueId = cueviewModel.playingCueId.value
+                playingCueId = cueviewModel.playingLongCueId.value
             )
         }
 

@@ -1,7 +1,6 @@
 package com.example.tablefunapp.ui
 
 import android.app.Application
-import android.content.IntentSender
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import com.example.tablefunapp.models.Cue
@@ -18,7 +17,9 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
 
     //States to hold
     //which cue are playing?
-    val playingCueId = mutableStateOf<Int?>(null)
+    val playingLongCueId = mutableStateOf<Int?>(null)
+    val playingShortCueId = mutableStateOf<Int?>(null)
+
     val cues = mutableStateOf<List<Cue>>(emptyList())
 
     init {
@@ -27,30 +28,31 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
 
     fun playShort(cue: Cue) {
         if(cue.shortSound == NO_SOUND) return
-        playingCueId.value = cue.id
-        soundRepository.play(cue.shortSound){
-            playingCueId.value = null
+        playingShortCueId.value = cue.id
+        soundRepository.playShort(cue.shortSound){
+            playingShortCueId.value = null
         }
         // playingCueId.value = null is not possible here need call back
 
     }
 
     fun playLong(cue: Cue) {
-        if(cue.longSounds.isEmpty()) return
-        if(playingCueId.value == cue.id){
-            soundRepository.stop()
-            playingCueId.value = null
+        if(cue.longSounds.isEmpty()) return //Guard clause when empty
+        if(playingLongCueId.value == cue.id){ //Guard clause when double tap for same long sound
+            soundRepository.stopLong()
+            playingLongCueId.value = null
             return
         }
-        playingCueId.value = cue.id
-        soundRepository.play(cue.longSounds.pickWeighted(), loop = true){
-            playingCueId.value = null
+        playingLongCueId.value = cue.id
+        soundRepository.playLong(cue.longSounds.pickWeighted()){
+            playingLongCueId.value = null
         }
     }
 
     override fun onCleared() {
         super.onCleared()
-        soundRepository.stop()
+        soundRepository.stopLong()
+        soundRepository.stopShort()
     }
 
 }
