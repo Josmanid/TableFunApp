@@ -19,7 +19,7 @@ class SoundRepository(private val context: Context) {
     fun playShort(soundResId: Int, onFinished: () -> Unit = {}) {
         stopShort() // releases the system resources
 
-        longPlayer?.setVolume(0.5f,0.5f) // turn down both audio channels
+        longPlayer?.setVolume(0.2f,0.2f) // turn down both audio channels
 
         shortPlayer = MediaPlayer.create(context, soundResId) // create instance for the given song found by id
         shortPlayer?.setOnCompletionListener { //when the listener is observing stop of short
