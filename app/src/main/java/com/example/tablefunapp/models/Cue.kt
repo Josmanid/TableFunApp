@@ -3,7 +3,7 @@ package com.example.tablefunapp.models
 import com.example.tablefunapp.R
 
 const val NO_SOUND = 0
-enum class CueAnimation { BOUNCE, FASTBOUNCE, PULSE, WOBBLE, SHAKE, SPIN }
+enum class CueAnimation { BOUNCE, FASTBOUNCE, FASTESTBOUNCE,  PULSE, WOBBLE, SHAKE, SPIN }
 
 data class WeightedSound(
     val soundResId: Int,

@@ -52,7 +52,7 @@ class CueRepository {
             "JohnzeManden",
             R.raw.johnz_short_hereisjohnny,
             listOf(
-                WeightedSound(R.raw.madao_long, weight = 40),
+                WeightedSound(R.raw.gunsofwagghhh_long, weight = 40),
                 WeightedSound(R.raw.valhallacaling_long, weight = 40),
                 WeightedSound(R.raw.pizza_spiderman_long, weight = 20)
             ),
@@ -83,7 +83,7 @@ class CueRepository {
             ),
             longTitle = " ",
             image = R.drawable.soy_blank,
-            animation = CueAnimation.BOUNCE
+            animation = CueAnimation.FASTESTBOUNCE
         ),
         Cue(
             7,

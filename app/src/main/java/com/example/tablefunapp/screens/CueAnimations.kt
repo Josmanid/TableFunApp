@@ -40,7 +40,17 @@ fun Modifier.cueAnimation(
             animation = tween(176, easing = FastOutSlowInEasing),
             repeatMode = RepeatMode.Reverse
         ),
-        label = "offsetY"
+        label = "offsetY2"
+    )
+
+    val offsetY3 by transition.animateFloat(
+        initialValue = 0f,
+        targetValue = -10f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(94, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "offsetY3"
     )
 
     val scale by transition.animateFloat(
@@ -78,6 +88,7 @@ fun Modifier.cueAnimation(
     return when (animation) {
         CueAnimation.BOUNCE -> this.offset(y = offsetY.dp)
         CueAnimation.FASTBOUNCE -> this.offset(y = offsetY2.dp)
+        CueAnimation.FASTESTBOUNCE -> this.offset(y = offsetY3.dp)
         CueAnimation.PULSE -> this.scale(scale)
         CueAnimation.WOBBLE -> this.rotate(rotation)
         CueAnimation.SHAKE -> this.offset(x = rotation.dp)
