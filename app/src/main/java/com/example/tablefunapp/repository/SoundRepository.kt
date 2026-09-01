@@ -23,7 +23,6 @@ class SoundRepository(private val context: Context) {
 
         shortPlayer = MediaPlayer.create(context, soundResId) // create instance for the given song found by id
         shortPlayer?.setOnCompletionListener { //when the listener is observing stop of short
-            longPlayer?.setVolume(1f,1f) // then turn up the long sound
             stopShort()
             onFinished()
         }
@@ -38,6 +37,7 @@ class SoundRepository(private val context: Context) {
 
     fun stopShort() {
         shortPlayer?.release()
+        longPlayer?.setVolume(1f,1f)
         shortPlayer = null
     }
 
