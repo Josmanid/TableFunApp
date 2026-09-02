@@ -16,7 +16,7 @@ class CueRepository {
             longSounds = listOf(
                 WeightedSound(R.raw.eminence_timeofwar_long, weight = 40),
                 WeightedSound(R.raw.tobeherox_long, weight = 40),
-                WeightedSound(R.raw.aiscream_long, weight = 20)
+                WeightedSound(R.raw.kristian_enemymetalpipe_long, weight = 20)
             ),
             longTitle = " ",
             image = R.drawable.gladkriger,
@@ -28,8 +28,8 @@ class CueRepository {
             R.raw.explosion_short,
             listOf(
                 WeightedSound(R.raw.touhou_owenwashere_epic_long, weight = 40),
-                WeightedSound(R.raw.raphaelfinalact_bdg3_long, weight = 40),
-                WeightedSound(R.raw.myheartwill_flute_long, weight = 20)
+                WeightedSound(R.raw.silantyev_trickstertheme_long, weight = 40),
+                WeightedSound(R.raw.vakuumyheart_flute_clipped_long, weight = 20)
             ),
             "",
             image = R.drawable.vakuu,
@@ -38,7 +38,7 @@ class CueRepository {
         Cue(
             3,
             "Håbet",
-            R.raw.anime_short,
+            R.raw.wingedhussars_short,
             listOf(
                 WeightedSound(R.raw.skyrim_dragonborncomes_long, weight = 40),
                 WeightedSound(R.raw.lassen_long_orchardofmine_instrumental, weight = 40),
@@ -67,7 +67,7 @@ class CueRepository {
             longSounds = listOf(
                 WeightedSound(R.raw.era_ameno_long, weight = 40),
                 WeightedSound(R.raw.ratdance_long, weight = 40),
-                WeightedSound(R.raw.hamtaro_long_dansk, weight = 20)
+                WeightedSound(R.raw.hamtarojap_long, weight = 20)
             ),
             longTitle = " ",
             image = R.drawable.dorime_rat,
@@ -88,10 +88,11 @@ class CueRepository {
         Cue(
             7,
             "Shop",
-            R.raw.random_short_nice,
+            R.raw.shop_thankyoukindsir_short,
             listOf(
-                WeightedSound(R.raw.shop_long_elderscrolls),
-                WeightedSound(R.raw.beedleshop_long)
+                WeightedSound(R.raw.shop_long_elderscrolls, weight = 40),
+                WeightedSound(R.raw.beedleshop_long, weight = 40),
+                WeightedSound(soundResId = R.raw.shop_pling_long, weight = 19)
             ),
             "",
             image = R.drawable.slay_shoopkeeper,
@@ -104,7 +105,7 @@ class CueRepository {
             listOf(
                 WeightedSound(R.raw.baldursgate_iwanttolife_long, weight = 40),
                 WeightedSound(R.raw.divinelaments_dos_long, weight = 40),
-                WeightedSound(R.raw.raphaelfinalact_bdg3_long, weight = 20)
+                WeightedSound(R.raw.aiscream_long, weight = 10)
             ),
             "",
             image = R.drawable.wither,
@@ -112,6 +113,15 @@ class CueRepository {
         ),
         Cue(
             9,
+            "OverWorld",
+            0,
+            listOf(WeightedSound(R.raw.thefieldsofard_long)),
+            "",
+            image = R.drawable.skyrim_landscape,
+            animation = CueAnimation.PULSE
+        ),
+        Cue(
+            10,
             "SideQuest",
             0,
             listOf(WeightedSound(R.raw.random_long_sidequest)),
