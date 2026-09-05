@@ -51,6 +51,9 @@ fun MainScreen(
                 cues = cueviewModel.cues.value,
                 onShortTap = {cue -> cueviewModel.playShort(cue)},
                 onLongTap = {cue -> cueviewModel.playLong(cue)},
+                onNext = {cueviewModel.playNext()},
+                onBack = {cueviewModel.playBack()},
+                onStop = {cueviewModel.onStop()},
                 playingLongCueId = cueviewModel.playingLongCueId.value,
                 playingShortCueId = cueviewModel.playingShortCueId.value
             )

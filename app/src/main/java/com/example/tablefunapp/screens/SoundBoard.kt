@@ -8,6 +8,7 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,8 +16,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Dangerous
+import androidx.compose.material.icons.filled.SkipNext
+import androidx.compose.material.icons.filled.SkipPrevious
+import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -44,10 +53,12 @@ fun SoundBoard(
     modifier: Modifier = Modifier,
     onShortTap: (Cue) -> Unit = {},
     onLongTap: (Cue) -> Unit = {},
+    onNext: () -> Unit = {},
+    onBack: () -> Unit = {},
+    onStop: () -> Unit = {},
     playingLongCueId: Int? = null,
     playingShortCueId: Int? = null
-
-    ) {
+) {
     Scaffold(
         modifier = modifier.fillMaxSize(),
         topBar = {
@@ -56,7 +67,27 @@ fun SoundBoard(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
-                title = { Text("Team Sexy") }
+                title = { Text("Team Sexy") },
+                actions = {
+                    FilledTonalIconButton(onClick = { onBack() }) {
+                        Icon(
+                            imageVector = Icons.Filled.SkipPrevious,
+                            contentDescription = "Back!"
+                        )
+                    }
+                    FilledTonalIconButton(onClick = { onStop() }) {
+                        Icon(
+                            imageVector = Icons.Filled.Stop,
+                            contentDescription = "Next!"
+                        )
+                    }
+                    FilledTonalIconButton(onClick = { onNext() }) {
+                        Icon(
+                            imageVector = Icons.Filled.SkipNext,
+                            contentDescription = "Next!"
+                        )
+                    }
+                }
             )
         }) { innerPadding ->
         LazyVerticalGrid(
@@ -79,6 +110,7 @@ fun SoundBoard(
         }
     }
 }
+
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CueBlock(
@@ -95,7 +127,8 @@ fun CueBlock(
             .combinedClickable(
                 onClick = { onShortTap() },
                 onDoubleClick = { onLongTap() }
-            ).cueAnimation(cue.animation, isPlayingLong || isPlayingShort)
+            )
+            .cueAnimation(cue.animation, isPlayingLong || isPlayingShort)
     ) {
         Box {
             Image(
@@ -144,7 +177,7 @@ fun CueBlock(
 fun SoundBoardPreview() {
     SoundBoard(
         cues = listOf(
-            Cue(1, "Kristian", 0, emptyList(), "Mugge", image =R.drawable.revenge),
+            Cue(1, "Kristian", 0, emptyList(), "Mugge", image = R.drawable.revenge),
             Cue(2, "Jonas C", 0, emptyList(), "", image = R.drawable.vakuu),
             Cue(3, "Lassen", 0, emptyList(), "", image = R.drawable.leende_ko_classic),
             Cue(4, "Jonas S", 0, emptyList(), "", image = R.drawable.senshi),
