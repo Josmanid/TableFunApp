@@ -134,17 +134,6 @@ fun CueBlock(
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
                 )
-                //TODO: Is it neccasary YAGNI??
-                if (cue.longTitle.isNotBlank()) {
-                    Text(
-                        text = cue.longTitle,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = Color.White.copy(alpha = 0.85f),
-                        textAlign = TextAlign.Center,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )
-                }
             }
         }
     }
