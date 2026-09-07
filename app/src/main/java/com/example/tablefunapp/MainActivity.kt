@@ -12,8 +12,12 @@ import com.example.tablefunapp.screens.SongSearch
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import com.example.tablefunapp.screens.FrontPage
 import com.example.tablefunapp.screens.SoundBoard
-import com.example.tablefunapp.ui.CueViewModel
+import com.example.tablefunapp.ui.BoardCueViewModel
+import com.example.tablefunapp.ui.BoardViewModel
 import com.example.tablefunapp.ui.SongSearchViewModel
 
 
@@ -36,7 +40,8 @@ class MainActivity : ComponentActivity() {
 fun MainScreen(
     modifier: Modifier = Modifier,
     viewModel: SongSearchViewModel = viewModel(),
-    cueviewModel: CueViewModel = viewModel(),
+    cueviewModel: BoardCueViewModel = viewModel(),
+    boardViewModel: BoardViewModel = viewModel()
 ) {
     val navController = rememberNavController()
     val songs = viewModel.songs.value
@@ -44,16 +49,33 @@ fun MainScreen(
 
     NavHost(
         navController = navController,
-        startDestination = NavRoutes.SoundBoard.route
+        startDestination = NavRoutes.FrontPage.route
     ) {
-        composable(NavRoutes.SoundBoard.route) {
+        composable(NavRoutes.FrontPage.route) {
+            FrontPage(
+                modifier = modifier,
+                boards = boardViewModel.boards.value,
+                onBoardClick = { board ->
+                    navController.navigate(NavRoutes.SoundBoard.route + "/${board.id}")
+                }
+            )
+        }
+
+
+        composable(
+            NavRoutes.SoundBoard.route + "/{boardId}",
+            arguments = listOf(navArgument("boardId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val boardId = backStackEntry.arguments?.getInt("boardId") ?: 0
+            cueviewModel.loadBoard(boardId)
+
             SoundBoard(
                 cues = cueviewModel.cues.value,
-                onShortTap = {cue -> cueviewModel.playShort(cue)},
-                onLongTap = {cue -> cueviewModel.playLong(cue)},
-                onNext = {cueviewModel.playNext()},
-                onBack = {cueviewModel.playBack()},
-                onStop = {cueviewModel.onStop()},
+                onShortTap = { cue -> cueviewModel.playShort(cue) },
+                onLongTap = { cue -> cueviewModel.playLong(cue) },
+                onNext = { cueviewModel.playNext() },
+                onBack = { cueviewModel.playBack() },
+                onStop = { cueviewModel.onStop() },
                 playingLongCueId = cueviewModel.playingLongCueId.value,
                 playingShortCueId = cueviewModel.playingShortCueId.value
             )
@@ -68,6 +90,7 @@ fun MainScreen(
                 onSearch = { query -> viewModel.search(query) }
             )
         }
+
     }
 }
 

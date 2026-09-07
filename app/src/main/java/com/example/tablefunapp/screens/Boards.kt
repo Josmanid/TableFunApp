@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -33,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tablefunapp.R
 import com.example.tablefunapp.models.Board
+import com.example.tablefunapp.repository.evershadeCues
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -126,7 +126,8 @@ fun BoardBlock(
 @Composable
 fun FrontPageReview() {
     FrontPage(boards = listOf(
-        Board(id = 1, name = "Primal", image = R.drawable.vibecat, cues = emptyList()),
-        Board(id = 2, name = "Lands of Evershade", image = R.drawable.vibecat, cues = emptyList())
+        Board(id = 1, name = "Lands of Evershade", image = 0, cues = evershadeCues),
+        Board(id = 2, name = "Primal", image = 0, cues = emptyList()),
+        Board(id = 3, name = "Skyrim", image = 0, cues = emptyList())
     ))
 }

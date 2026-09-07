@@ -5,10 +5,8 @@ import com.example.tablefunapp.models.Cue
 import com.example.tablefunapp.models.CueAnimation
 import com.example.tablefunapp.models.WeightedSound
 
-class CueRepository {
-    //making a list of private hardcodet properties
 
-    private val cues = listOf(
+     val evershadeCues = listOf(
         Cue(
             id = 1,
             name = "den udøvende magt",
@@ -132,9 +130,3 @@ class CueRepository {
 
     )
 
-    //Promises to return a list of type Cue
-    fun getCues(): List<Cue> {
-        return cues
-    }
-
-}

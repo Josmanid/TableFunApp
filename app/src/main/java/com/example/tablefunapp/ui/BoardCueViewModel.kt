@@ -6,13 +6,13 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.tablefunapp.models.Cue
 import com.example.tablefunapp.models.NO_SOUND
 import com.example.tablefunapp.models.pickWeighted
-import com.example.tablefunapp.repository.CueRepository
+import com.example.tablefunapp.repository.BoardRepository
 import com.example.tablefunapp.repository.SoundRepository
 
-class CueViewModel(application: Application) : AndroidViewModel(application) {
+class BoardCueViewModel(application: Application) : AndroidViewModel(application) {
 
     //Dependency
-    private val cueRepository = CueRepository()
+    private val boardRepository = BoardRepository()
     private val soundRepository = SoundRepository(application)
 
 
@@ -24,8 +24,9 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
     val playerCount = 5
     val cues = mutableStateOf<List<Cue>>(emptyList())
 
-    init {
-        cues.value = cueRepository.getCues()
+    fun loadBoard(boardId: Int) {
+        val board = boardRepository.getBoards().find { it.id == boardId }
+        cues.value = board?.cues ?: emptyList()
     }
 
     fun playShort(cue: Cue) {
@@ -69,11 +70,11 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun onStop(){
-        onCleared()
+    fun onStop() {
+        soundRepository.stopLong()
+        soundRepository.stopShort()
         playingLongCueId.value = null
         playingShortCueId.value = null
-
     }
 
     override fun onCleared() {

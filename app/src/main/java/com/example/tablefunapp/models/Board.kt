@@ -5,6 +5,6 @@ import com.example.tablefunapp.R
 data class Board(
     val id: Int,
     val name: String,
-    val image: Int = R.drawable.vibecat,
-    val cues: List<Cue>
+    val cues: List<Cue>,
+    val image: Int = R.drawable.vibecat
 )
