@@ -9,15 +9,15 @@ class BoardRepository {
         Board(
             id = 1,
             name = "Land og Evershade",
-            image = R.drawable.vibecat,
+            image = R.drawable.evershade,
             cues = evershadeCues
 
         ),
         Board(
             id = 2,
             name = "Primal",
-            image = R.drawable.vibecat,
-            cues = emptyList()
+            image = R.drawable.primal,
+            cues = primalCues
         ),
         Board(
             id = 3,

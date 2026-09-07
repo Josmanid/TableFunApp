@@ -73,6 +73,16 @@ fun Modifier.cueAnimation(
         label = "rotation"
     )
 
+    val rotation2 by transition.animateFloat(
+        initialValue = -4f,
+        targetValue = 4f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(316),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "rotationf"
+    )
+
     val spin by transition.animateFloat(
         initialValue = 0f,
         targetValue = 360f,
@@ -91,6 +101,7 @@ fun Modifier.cueAnimation(
         CueAnimation.FASTESTBOUNCE -> this.offset(y = offsetY3.dp)
         CueAnimation.PULSE -> this.scale(scale)
         CueAnimation.WOBBLE -> this.rotate(rotation)
+        CueAnimation.FASTWOBBLE -> this.rotate(rotation2)
         CueAnimation.SHAKE -> this.offset(x = rotation.dp)
         CueAnimation.SPIN -> this.rotate(spin)
     }
