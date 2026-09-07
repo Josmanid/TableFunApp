@@ -24,9 +24,11 @@ class BoardCueViewModel(application: Application) : AndroidViewModel(application
     val playerCount = 5
     val cues = mutableStateOf<List<Cue>>(emptyList())
 
+    val boardName = mutableStateOf("")
     fun loadBoard(boardId: Int) {
         val board = boardRepository.getBoards().find { it.id == boardId }
         cues.value = board?.cues ?: emptyList()
+        boardName.value = board?.name ?: ""
     }
 
     fun playShort(cue: Cue) {

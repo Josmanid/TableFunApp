@@ -10,6 +10,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.tablefunapp.screens.SongSearch
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
@@ -67,15 +68,21 @@ fun MainScreen(
             arguments = listOf(navArgument("boardId") { type = NavType.IntType })
         ) { backStackEntry ->
             val boardId = backStackEntry.arguments?.getInt("boardId") ?: 0
-            cueviewModel.loadBoard(boardId)
+            LaunchedEffect(boardId) {
+                cueviewModel.loadBoard(boardId)
+            }
+
+
 
             SoundBoard(
                 cues = cueviewModel.cues.value,
+                title = cueviewModel.boardName.value,
                 onShortTap = { cue -> cueviewModel.playShort(cue) },
                 onLongTap = { cue -> cueviewModel.playLong(cue) },
                 onNext = { cueviewModel.playNext() },
-                onBack = { cueviewModel.playBack() },
+                onPrevious = { cueviewModel.playBack() },
                 onStop = { cueviewModel.onStop() },
+                onNavigateBack = { navController.popBackStack() },
                 playingLongCueId = cueviewModel.playingLongCueId.value,
                 playingShortCueId = cueviewModel.playingShortCueId.value
             )

@@ -17,15 +17,15 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Dangerous
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.SkipNext
 import androidx.compose.material.icons.filled.SkipPrevious
 import androidx.compose.material.icons.filled.Stop
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -50,12 +50,14 @@ import androidx.compose.ui.graphics.Color
 @Composable
 fun SoundBoard(
     cues: List<Cue>,
+    title: String = "",
     modifier: Modifier = Modifier,
     onShortTap: (Cue) -> Unit = {},
     onLongTap: (Cue) -> Unit = {},
     onNext: () -> Unit = {},
-    onBack: () -> Unit = {},
+    onPrevious: () -> Unit = {},
     onStop: () -> Unit = {},
+    onNavigateBack: () -> Unit = {},
     playingLongCueId: Int? = null,
     playingShortCueId: Int? = null
 ) {
@@ -67,9 +69,9 @@ fun SoundBoard(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
-                title = { Text("Team Sexy") },
+                title = { Text(title) },
                 actions = {
-                    FilledTonalIconButton(onClick = { onBack() }) {
+                    FilledTonalIconButton(onClick = { onPrevious() }) {
                         Icon(
                             imageVector = Icons.Filled.SkipPrevious,
                             contentDescription = "Back!"
@@ -87,7 +89,15 @@ fun SoundBoard(
                             contentDescription = "Next!"
                         )
                     }
-                }
+                },
+                navigationIcon = {
+                    IconButton(onClick = { onNavigateBack() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Tilbage"
+                        )
+                    }
+                },
             )
         }) { innerPadding ->
         LazyVerticalGrid(
