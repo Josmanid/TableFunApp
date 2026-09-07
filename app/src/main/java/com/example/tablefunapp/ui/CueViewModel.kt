@@ -44,7 +44,7 @@ class CueViewModel(application: Application) : AndroidViewModel(application) {
 
     fun playNext() {
         val current = playingLongCueId.value
-        val next = cues.value.indexOfFirst { it.id == current }
+        val next = cues.value.indexOfFirst { it.id == current } // Returns -1 with start
         val nextSong = (next + 1) % playerCount
         playLong(cues.value[nextSong])
     }
