@@ -69,35 +69,30 @@ fun SoundBoard(
 ) {
 
     Scaffold(
-        modifier = modifier.fillMaxSize().focusable().onKeyEvent {
-            if (
-                it.type == KeyEventType.KeyDown &&
-                it.key == Key.DirectionRight
-            ){
-                onNext()
-                true
-            } else{
-                false
-            }
-            if (
-                it.type == KeyEventType.KeyDown &&
-                it.key == Key.DirectionLeft
-            ){
-                onPrevious()
-                true
-            } else {
-                false
-            }
-            if (
-                it.type == KeyEventType.KeyDown &&
-                it.key == Key.Spacebar
-            ){
-                onStop()
-                true
-            } else{
-                false
-            }
-        },
+        modifier = modifier
+            .fillMaxSize()
+            .focusable()
+            .onKeyEvent {
+                if (it.type != KeyEventType.KeyDown) return@onKeyEvent false
+                when (it.key) {
+                    Key.DirectionRight -> {
+                        onNext()
+                        true
+                    }
+
+                    Key.DirectionLeft -> {
+                        onPrevious()
+                        true
+                    }
+
+                    Key.Spacebar -> {
+                        onStop()
+                        true
+                    }
+
+                    else -> false
+                }
+            },
 
         topBar = {
             TopAppBar(
