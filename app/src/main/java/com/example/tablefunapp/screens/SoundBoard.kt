@@ -79,6 +79,24 @@ fun SoundBoard(
             } else{
                 false
             }
+            if (
+                it.type == KeyEventType.KeyDown &&
+                it.key == Key.DirectionLeft
+            ){
+                onPrevious()
+                true
+            } else {
+                false
+            }
+            if (
+                it.type == KeyEventType.KeyDown &&
+                it.key == Key.Spacebar
+            ){
+                onStop()
+                true
+            } else{
+                false
+            }
         },
 
         topBar = {
