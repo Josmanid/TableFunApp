@@ -5,6 +5,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
+import androidx.compose.foundation.focusable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -44,6 +45,11 @@ import androidx.compose.ui.unit.dp
 import com.example.tablefunapp.models.Cue
 import com.example.tablefunapp.R
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.Key
+import androidx.compose.ui.input.key.KeyEventType
+import androidx.compose.ui.input.key.key
+import androidx.compose.ui.input.key.onKeyEvent
+import androidx.compose.ui.input.key.type
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,8 +67,20 @@ fun SoundBoard(
     playingLongCueId: Int? = null,
     playingShortCueId: Int? = null
 ) {
+
     Scaffold(
-        modifier = modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize().focusable().onKeyEvent {
+            if (
+                it.type == KeyEventType.KeyDown &&
+                it.key == Key.DirectionRight
+            ){
+                onNext()
+                true
+            } else{
+                false
+            }
+        },
+
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
