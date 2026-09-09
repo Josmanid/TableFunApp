@@ -32,9 +32,9 @@ val primalCues = listOf(
     Cue(
         3,
         "Drusk",
-        R.raw.humanbard_short,
+        R.raw.hesbeginningtobelieve_short,
         listOf(
-            WeightedSound(R.raw.skelligecombat_long)
+            WeightedSound(R.raw.safriduobongo_long)
 
         ),
         "",
