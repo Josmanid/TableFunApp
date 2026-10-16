@@ -10,7 +10,7 @@ import com.example.tablefunapp.models.WeightedSound
         Cue(
             id = 1,
             name = "Maximillian",
-            shortSound = R.raw.kristian_short_the_darkness,
+            shortSound = R.raw.pegasus_intro_short,
             longSounds = listOf(
                 WeightedSound(R.raw.eminence_timeofwar_long, weight = 40),
                 WeightedSound(R.raw.tobeherox_long, weight = 40),
