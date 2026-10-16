@@ -8,7 +8,7 @@ class BoardRepository {
     private val boards = listOf(
         Board(
             id = 1,
-            name = "Land og Evershade",
+            name = "Lands of Evershade",
             image = R.drawable.evershade,
             cues = evershadeCues
 

@@ -9,7 +9,7 @@ import com.example.tablefunapp.models.WeightedSound
      val evershadeCues = listOf(
         Cue(
             id = 1,
-            name = "den udøvende magt",
+            name = "Maximillian",
             shortSound = R.raw.kristian_short_the_darkness,
             longSounds = listOf(
                 WeightedSound(R.raw.eminence_timeofwar_long, weight = 40),
@@ -17,12 +17,12 @@ import com.example.tablefunapp.models.WeightedSound
                 WeightedSound(R.raw.kristian_enemymetalpipe_long, weight = 20)
             ),
             longTitle = " ",
-            image = R.drawable.gladkriger,
+            image = R.drawable.maximillian,
             animation = CueAnimation.SHAKE
         ),
         Cue(
             2,
-            "Vakuu",
+            "Auram",
             R.raw.explosion_short,
             listOf(
                 WeightedSound(R.raw.touhou_owenwashere_epic_long, weight = 40),
@@ -30,7 +30,7 @@ import com.example.tablefunapp.models.WeightedSound
                 WeightedSound(R.raw.vakuumyheart_flute_clipped_long, weight = 20)
             ),
             "",
-            image = R.drawable.vakuu,
+            image = R.drawable.auram,
             animation = CueAnimation.PULSE
         ),
         Cue(
@@ -47,8 +47,8 @@ import com.example.tablefunapp.models.WeightedSound
         ),
         Cue(
             4,
-            "JohnzeManden",
-            R.raw.johnz_short_hereisjohnny,
+            "Lil Jonz No!",
+            R.raw.liljon_short_yeah,
             listOf(
                 WeightedSound(R.raw.gunsofwagghhh_long, weight = 40),
                 WeightedSound(R.raw.valhallacaling_long, weight = 40),
