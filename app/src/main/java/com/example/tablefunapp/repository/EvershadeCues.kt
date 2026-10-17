@@ -14,7 +14,8 @@ import com.example.tablefunapp.models.WeightedSound
             longSounds = listOf(
                 WeightedSound(R.raw.eminence_timeofwar_long, weight = 40),
                 WeightedSound(R.raw.tobeherox_long, weight = 40),
-                WeightedSound(R.raw.kristian_enemymetalpipe_long, weight = 20)
+                WeightedSound(R.raw.kristian_enemymetalpipe_long, weight = 20),
+                WeightedSound(R.raw.aiscream_long, shortcut = "otaku")
             ),
             longTitle = " ",
             image = R.drawable.maximillian,
@@ -27,7 +28,8 @@ import com.example.tablefunapp.models.WeightedSound
             listOf(
                 WeightedSound(R.raw.touhou_owenwashere_epic_long, weight = 40),
                 WeightedSound(R.raw.silantyev_trickstertheme_long, weight = 40),
-                WeightedSound(R.raw.vakuumyheart_flute_clipped_long, weight = 20)
+                WeightedSound(R.raw.vakuumyheart_flute_clipped_long, weight = 20),
+                WeightedSound(R.raw.raphaelfinalact_bdg3_long, shortcut = "devil", randomizable = false)
             ),
             "",
             image = R.drawable.auram,
@@ -40,7 +42,8 @@ import com.example.tablefunapp.models.WeightedSound
             listOf(
                 WeightedSound(R.raw.skyrim_dragonborncomes_long, weight = 40),
                 WeightedSound(R.raw.lassen_long_orchardofmine_instrumental, weight = 40),
-                WeightedSound(R.raw.lassen_long_mosan, weight = 20)
+                WeightedSound(R.raw.lassen_long_mosan, weight = 20),
+                WeightedSound(R.raw.lassen_long_mosan, shortcut = "mosan", randomizable = false),
             ),
             "",
             image = R.drawable.leende_ko_classic
@@ -52,7 +55,8 @@ import com.example.tablefunapp.models.WeightedSound
             listOf(
                 WeightedSound(R.raw.gunsofwagghhh_long, weight = 40),
                 WeightedSound(R.raw.valhallacaling_long, weight = 40),
-                WeightedSound(R.raw.pizza_spiderman_long, weight = 20)
+                WeightedSound(R.raw.pizza_spiderman_long, weight = 20),
+                WeightedSound(R.raw.lazytowncooking_long, shortcut = "lillejohnz", randomizable = false)
             ),
             "",
             image = R.drawable.senshi,
@@ -65,7 +69,8 @@ import com.example.tablefunapp.models.WeightedSound
             longSounds = listOf(
                 WeightedSound(R.raw.era_ameno_long, weight = 40),
                 WeightedSound(R.raw.ratdance_long, weight = 40),
-                WeightedSound(R.raw.hamtarojap_long, weight = 20)
+                WeightedSound(R.raw.hamtarojap_long, weight = 20),
+                WeightedSound(R.raw.hamtaro_long_dansk, shortcut = "hamtaro", randomizable = false)
             ),
             longTitle = " ",
             image = R.drawable.dorime_rat,

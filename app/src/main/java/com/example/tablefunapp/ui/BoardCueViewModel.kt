@@ -24,7 +24,7 @@ class BoardCueViewModel(application: Application) : AndroidViewModel(application
     val playingLongCueId = mutableStateOf<Int?>(null)
     val playingShortCueId = mutableStateOf<Int?>(null)
 
-    val playerCount = 5
+    val playerCount = 6
     val cues = mutableStateOf<List<Cue>>(emptyList())
 
     val boardName = mutableStateOf("")
