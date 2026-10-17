@@ -84,7 +84,8 @@ fun MainScreen(
                 onStop = { cueviewModel.onStop() },
                 onNavigateBack = { navController.popBackStack() },
                 playingLongCueId = cueviewModel.playingLongCueId.value,
-                playingShortCueId = cueviewModel.playingShortCueId.value
+                playingShortCueId = cueviewModel.playingShortCueId.value,
+                onCharTyped = { c -> cueviewModel.onCharTyped(c) }
             )
         }
 

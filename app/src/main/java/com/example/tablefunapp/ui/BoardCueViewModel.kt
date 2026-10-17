@@ -4,10 +4,12 @@ import android.app.Application
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import com.example.tablefunapp.models.Cue
+import com.example.tablefunapp.models.matchShortcut
 import com.example.tablefunapp.models.NO_SOUND
 import com.example.tablefunapp.models.pickWeighted
 import com.example.tablefunapp.repository.BoardRepository
 import com.example.tablefunapp.repository.SoundRepository
+
 
 class BoardCueViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -15,6 +17,7 @@ class BoardCueViewModel(application: Application) : AndroidViewModel(application
     private val boardRepository = BoardRepository()
     private val soundRepository = SoundRepository(application)
 
+    private var shortcutBuffer = ""
 
     //States to hold
     //which cue are playing?
@@ -60,15 +63,29 @@ class BoardCueViewModel(application: Application) : AndroidViewModel(application
     }
 
     fun playLong(cue: Cue) {
-        if (cue.longSounds.isEmpty()) return //Guard clause when empty
-        if (playingLongCueId.value == cue.id) { //Guard clause when double tap for same long sound
+        if (cue.longSounds.isEmpty()) return
+        if (playingLongCueId.value == cue.id) {
             soundRepository.stopLong()
             playingLongCueId.value = null
             return
         }
+        playLongSound(cue, cue.longSounds.pickWeighted())
+    }
+
+    private fun playLongSound(cue: Cue, soundResId: Int) {
         playingLongCueId.value = cue.id
-        soundRepository.playLong(cue.longSounds.pickWeighted()) {
+        soundRepository.playLong(soundResId) {
             playingLongCueId.value = null
+        }
+    }
+
+    fun onCharTyped(char: Char) {
+        shortcutBuffer = shortcutBuffer.takeLast(10) + char
+
+        val match = cues.value.matchShortcut(shortcutBuffer)
+        if (match != null) {
+            shortcutBuffer = ""
+            playLongSound(match.cue, match.soundResId)
         }
     }
 

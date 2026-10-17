@@ -50,6 +50,7 @@ import androidx.compose.ui.input.key.KeyEventType
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onKeyEvent
 import androidx.compose.ui.input.key.type
+import androidx.compose.ui.input.key.utf16CodePoint
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,7 +66,8 @@ fun SoundBoard(
     onStop: () -> Unit = {},
     onNavigateBack: () -> Unit = {},
     playingLongCueId: Int? = null,
-    playingShortCueId: Int? = null
+    playingShortCueId: Int? = null,
+    onCharTyped: (Char) -> Unit = {}
 ) {
 
     Scaffold(
@@ -90,7 +92,13 @@ fun SoundBoard(
                         true
                     }
 
-                    else -> false
+                    else -> {
+                        val char = it.utf16CodePoint.toChar()
+                        if (char.isLetterOrDigit()) {
+                            onCharTyped(char)
+                            true
+                        } else false
+                    }
                 }
             },
 

@@ -7,7 +7,9 @@ enum class CueAnimation { BOUNCE, FASTBOUNCE, FASTESTBOUNCE,  PULSE, WOBBLE, FAS
 
 data class WeightedSound(
     val soundResId: Int,
-    val weight: Int = 1
+    val weight: Int = 1,
+    val shortcut: String = "",
+    val randomizable: Boolean = true
 )
 data class Cue(
     val id: Int,
@@ -17,4 +19,5 @@ data class Cue(
     val longTitle: String,
     val image: Int = R.drawable.vibecat,
     val animation: CueAnimation = CueAnimation.BOUNCE
+
 )
