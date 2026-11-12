@@ -231,7 +231,9 @@ fun SoundBoardPreview() {
             Cue(3, "Lassen", 0, emptyList(), "", image = R.drawable.leende_ko_classic),
             Cue(4, "Jonas S", 0, emptyList(), "", image = R.drawable.senshi),
             Cue(5, "Shop", 0, emptyList(), "", image = R.drawable.slay_shoopkeeper),
-            Cue(6, "SideQuest", 0, emptyList(), "", image = R.drawable.sidequest)
+            Cue(6, "SideQuest", 0, emptyList(), "", image = R.drawable.sidequest),
+            Cue(6, "SideQuest", 0, emptyList(), "", image = R.drawable.askebunke_med_rotte),
+            Cue(6, "SideQuest", 0, emptyList(), "", image = R.drawable.robot_sir)
         )
     )
 }
