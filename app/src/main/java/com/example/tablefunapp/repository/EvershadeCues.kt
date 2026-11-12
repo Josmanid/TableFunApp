@@ -65,15 +65,15 @@ val evershadeCues = listOf(
     Cue(
         id = 5,
         name = "Sir Vitor",
-        shortSound = R.raw.hamtaro_sad,
+        shortSound = R.raw.sir_vitor_short,
         longSounds = listOf(
-            WeightedSound(R.raw.runninginthe90s_long, weight = 80),
-            WeightedSound(R.raw.runninginthe90s_shittyflute_long, weight = 20),
-            WeightedSound(R.raw.runninginthe90s_shittyflute_long, weight = 20)
+            WeightedSound(R.raw.metal_crusher_long, weight = 47),
+            WeightedSound(R.raw.robo_theme_long, weight = 47),
+            WeightedSound(R.raw.pain_train_long, weight = 5)
         ),
         longTitle = " ",
         image = R.drawable.robot_sir,
-        animation = CueAnimation.SPIN
+        animation = CueAnimation.PULSE
     ),
     Cue(
         id = 6,
@@ -89,30 +89,43 @@ val evershadeCues = listOf(
     ),
     Cue(
         7,
-        "Enemy",
+        "Minions",
         0,
         listOf(
-            WeightedSound(R.raw.bossfight_long_vordtoftheborealvalley)
+            WeightedSound(R.raw.twiste_force_long, weight = 40),
+            WeightedSound(R.raw.dark_of_the_night_long, weight = 40),
+            WeightedSound(R.raw.number_one_long, weight = 20)
         ),
         "",
-        image = R.drawable.gladkriger,
+        image = R.drawable.minions,
         animation = CueAnimation.BOUNCE
     ),
     Cue(
         8,
-        "Shop",
-        R.raw.shop_thankyoukindsir_short,
+        "Elite Mob",
+        0,
         listOf(
-            WeightedSound(R.raw.shop_long_elderscrolls, weight = 40),
-            WeightedSound(R.raw.beedleshop_long, weight = 40),
-            WeightedSound(soundResId = R.raw.shop_pling_long, weight = 19)
+            WeightedSound(R.raw.enmerkar_forest_battle_long, weight = 95),
+            WeightedSound(R.raw.riberhus, weight = 5)
         ),
         "",
-        image = R.drawable.slay_shoopkeeper,
-        animation = CueAnimation.SPIN
+        image = R.drawable.elite_mob,
+        animation = CueAnimation.FASTBOUNCE
     ),
     Cue(
         9,
+        "The BOSS",
+        0,
+        listOf(
+            WeightedSound(R.raw.malzeno_battle_theme_long, weight = 95),
+            WeightedSound(R.raw.riberhus, weight = 5)
+        ),
+        "",
+        image = R.drawable.gladkriger,
+        animation = CueAnimation.SHAKE
+    ),
+    Cue(
+        10,
         "Camp",
         R.raw.campdivorced_short,
         listOf(
@@ -125,7 +138,7 @@ val evershadeCues = listOf(
         animation = CueAnimation.SPIN
     ),
     Cue(
-        10,
+        11,
         "SideQuest",
         0,
         listOf(WeightedSound(R.raw.random_long_sidequest)),
@@ -134,7 +147,7 @@ val evershadeCues = listOf(
         animation = CueAnimation.FASTBOUNCE
     ),
     Cue(
-        id = 11,
+        id = 12,
         name = "RIP <3",
         shortSound = R.raw.hamtaro_sad,
         longSounds = listOf(
